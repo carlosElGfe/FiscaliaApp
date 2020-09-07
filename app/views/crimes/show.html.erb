@@ -1,0 +1,38 @@
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6">
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Titulo</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Etiquetas</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Lugar</a>
+            <a class="list-group-item list-group-item-action" id="list-desc-list" data-toggle="list" href="#list-desc" role="tab" aria-controls="desc">Descripcion</a>
+      <a class="list-group-item list-group-item-action" id="list-act-list" data-toggle="list" href="#list-act" role="tab" aria-controls="act">Opciones</a>
+
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><%= @crime.title%></div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list"><%= @crime.labels%></div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list"><%= @crime.place%></div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list"><%= @crime.created_at.to_date%></div>
+      <div class="tab-pane fade" id="list-desc" role="tabpanel" aria-labelledby="list-desc-list"><%= @crime.description%></div>
+      <div class="tab-pane fade" id="list-act" role="tabpanel" aria-labelledby="list-act-list"><%= link_to "Editar", edit_crime_path(@crime.id),:class => "btn btn-primary"%><%= link_to "Eliminar", crime_path(@crime.id),:style => "margin-left:5px",:data => { :foo_bar => 'Seguro que desea borrar el crimen?' },:method => :DELETE,:class => "btn btn-danger"%></div>
+
+    </div>
+  </div>
+</div>
+<%@crimethief = CrimeThief.new%>
+<div class="card" style="margin-top:20px">
+<div class="card-header">
+<h2>Añadir Autor</h2>
+</div>
+<%= render partial: 'crime_thiefs/form', locals: {crime_thief: @crimethief} %>
+</div></div>
+
+<div class="col-3">
+</div></div>
