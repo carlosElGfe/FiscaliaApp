@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_09_07_012311) do
-
   create_table "crime_thiefs", force: :cascade do |t|
     t.integer "crime_id", null: false
     t.integer "thief_id", null: false

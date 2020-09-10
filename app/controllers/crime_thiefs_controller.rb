@@ -25,6 +25,11 @@ class CrimeThiefsController < ApplicationController
   # POST /crime_thiefs.json
   def create
     @crime_thief = CrimeThief.new(crime_thief_params)
+    puts("start new")
+    puts(params[:crime_id])
+    puts(@crime_thief.thief_id)
+    @crime_thief.crime_id = params[:crime_id]
+    puts("debug")
     @crime = Crime.where(id:@crime_thief.crime_id).first
     respond_to do |format|
       if @crime_thief.save
