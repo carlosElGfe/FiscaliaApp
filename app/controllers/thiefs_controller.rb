@@ -28,8 +28,11 @@ class ThiefsController < ApplicationController
 
     respond_to do |format|
       if @thief.save
-        format.html { redirect_to @thief, notice: 'Thief was successfully created.' }
-        format.json { render :show, status: :created, location: @thief }
+        if params[:crime_id].present?
+          format.html { redirect_to crime_path(params[:crime_id]), notice: 'Thief was successfully created.' }
+          format.json { render :show, status: :created, location: @thief }
+        end
+
       else
         format.html { render :new }
         format.json { render json: @thief.errors, status: :unprocessable_entity }
@@ -69,6 +72,6 @@ class ThiefsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def thief_params
-      params.fetch(:thief, {})
+      params.fetch(:thief, {}).permit(:name,:rut,:tags,:alias_list,:crime_id)
     end
 end
